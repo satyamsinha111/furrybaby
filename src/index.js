@@ -7,12 +7,15 @@ import {
   Route,
 } from "react-router-dom";
 import {PrivateComponents,PublicComponents,Shared} from  "./components";
+import store from "./redux/store.js";
+import { Provider } from 'react-redux';
 const {Homepage,UserDetails} = PrivateComponents;
 const {Login,Signup,ForgotPassword} = PublicComponents;
 const { NotFoundError } = Shared;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store={store}>
   <BrowserRouter>
      <Routes>
       <Route path='/' element={<Login />} />
@@ -23,4 +26,5 @@ root.render(
       <Route path='*' element={<NotFoundError />} />
      </Routes>
   </BrowserRouter>
+  </Provider>
 );
